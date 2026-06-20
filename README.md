@@ -63,6 +63,18 @@ Given what the actuator was commanded to do, does the measured behavior look
 nominal or degraded?
 ```
 
+System Overview
+
+![System overview](assets/diagrams/system-overview.png)
+
+Bench Hardware Architecture
+
+![Bench hardware architecture](assets/diagrams/hardware-architecture.png)
+
+Shadow-Mode Detection Pipeline
+
+![shadow detection pipeline](assets/diagrams/software-architecture.png)
+
 The current prototype is focused on detecting controlled degradation in shadow
 mode. It observes and scores behavior, but does not directly control hardware
 live.
@@ -88,7 +100,39 @@ Validated test scope:
 Activation score is a model output in the range 0-1, where higher values
 indicate stronger fault/degradation detection.
 
-Golden result:
+Visual Bench Evidence
+
+The figures below show the current strongest public-facing bench result: a D25
+motor test with a 10g preload and intermittent 90% supply-overlay degradation.
+The important behavior is the full sequence: low baseline activation, high
+activation during labeled degradation windows, and return toward lower activation
+after recovery.
+
+Detection Timeline
+
+![D25 detection timeline](assets/plots/d25/d25-hero-activation-timeline.png)
+
+The orange regions mark labeled degradation windows. The detector activation
+rises during the degradation windows and returns toward lower activation during
+non-event and recovery periods. The velocity trace is normalized for visual
+comparison.
+
+Normal vs Degraded Response
+
+![D25 normal vs degraded comparison](assets/plots/d25/d25-normal-vs-degraded-comparison.png)
+
+This comparison summarizes segment-level behavior from a clean later-session
+run. The degradation condition combines the 10g preload with intermittent 90%
+supply overlay.
+
+Compact Metrics Visualization
+
+![D25 golden metrics compact](assets/plots/d25/d25-golden-metrics-compact.png)
+
+The compact metrics figure visually summarizes the same key behavior reported in
+the table below: low activation during preload-only baseline, strong activation
+during the 90% overlay fault window, and low activation again after recovery.
+Golden metrics:
 
 | Metric | Result |
 | --- | ---: |
