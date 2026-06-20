@@ -110,7 +110,7 @@ after recovery.
 
 Detection Timeline
 
-![D25 detection timeline](assets/plots/d25/d25-hero-activation-timeline.png)
+![D25 detection timeline](assets/plots/d25/d25_hero_activation_timeline.png)
 
 The orange regions mark labeled degradation windows. The detector activation
 rises during the degradation windows and returns toward lower activation during
@@ -119,7 +119,7 @@ comparison.
 
 Normal vs Degraded Response
 
-![D25 normal vs degraded comparison](assets/plots/d25/d25-normal-vs-degraded-comparison.png)
+![D25 normal vs degraded comparison](assets/plots/d25/d25_normal_vs_degraded_comparison.png)
 
 This comparison summarizes segment-level behavior from a clean later-session
 run. The degradation condition combines the 10g preload with intermittent 90%
@@ -127,7 +127,7 @@ supply overlay.
 
 Compact Metrics Visualization
 
-![D25 golden metrics compact](assets/plots/d25/d25-golden-metrics-compact.png)
+![D25 golden metrics compact](assets/plots/d25/d25_golden_metrics_compact.png)
 
 The compact metrics figure visually summarizes the same key behavior reported in
 the table below: low activation during preload-only baseline, strong activation
