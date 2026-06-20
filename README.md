@@ -261,7 +261,7 @@ I am looking for:
 If you work with motorized systems, robotics, actuator diagnostics, or adaptive
 control and are open to giving feedback, please contact:
 
-**Jack Smith**  
+**Jack S.**  
 adaptive.actuator@gmail.com
 
 ## Repository Scope
