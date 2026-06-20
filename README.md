@@ -63,17 +63,22 @@ Given what the actuator was commanded to do, does the measured behavior look
 nominal or degraded?
 ```
 
-System Overview
+###  System Overview
 
 ![System overview](assets/diagrams/system-overview.png)
 
-Bench Hardware Architecture
+<details>
+<summary>Bench hardware and detection pipeline diagrams</summary>
+
+####  Bench Hardware Architecture
 
 ![Bench hardware architecture](assets/diagrams/hardware-architecture.png)
 
-Shadow-Mode Detection Pipeline
+####  Shadow-Mode Detection Pipeline
 
 ![shadow detection pipeline](assets/diagrams/software-architecture.png)
+
+</details>
 
 The current prototype is focused on detecting controlled degradation in shadow
 mode. It observes and scores behavior, but does not directly control hardware
@@ -108,7 +113,7 @@ The important behavior is the full sequence: low baseline activation, high
 activation during labeled degradation windows, and return toward lower activation
 after recovery.
 
-Detection Timeline
+###  Detection Timeline
 
 ![D25 detection timeline](assets/plots/d25/d25_hero_activation_timeline.png)
 
@@ -117,7 +122,7 @@ rises during the degradation windows and returns toward lower activation during
 non-event and recovery periods. The velocity trace is normalized for visual
 comparison.
 
-Normal vs Degraded Response
+###  Normal vs Degraded Response
 
 ![D25 normal vs degraded comparison](assets/plots/d25/d25_normal_vs_degraded_comparison.png)
 
@@ -125,13 +130,14 @@ This comparison summarizes segment-level behavior from a clean later-session
 run. The degradation condition combines the 10g preload with intermittent 90%
 supply overlay.
 
-Compact Metrics Visualization
+###  Compact Metrics Visualization
 
 ![D25 golden metrics compact](assets/plots/d25/d25_golden_metrics_compact.png)
 
 The compact metrics figure visually summarizes the same key behavior reported in
 the table below: low activation during preload-only baseline, strong activation
 during the 90% overlay fault window, and low activation again after recovery.
+
 Golden metrics:
 
 | Metric | Result |
