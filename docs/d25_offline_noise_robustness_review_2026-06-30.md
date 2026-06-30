@@ -12,17 +12,6 @@ The goal was to answer:
 What happens when signal noise corrupts the actuator traces?
 ```
 
-## Source Traces
-
-Golden fault trace:
-
-- `data/hardware/d25_drv8874_pico2/10g_fixture_90%_later_clean_1.csv`
-
-Clean baseline traces:
-
-- `data/hardware/d25_drv8874_pico2/10g_fixture_baseline_later_clean_1.csv`
-- `data/hardware/d25_drv8874_pico2/10g_fixture_baseline_later_clean_2.csv`
-
 ## Method
 
 The offline robustness tool injected controlled corruption into copied CSV
@@ -111,23 +100,9 @@ Practical tolerance boundary:
 - Severity `0.05` and above should be treated as a stress condition rather than
   ordinary operating noise until calibrated against real noisy field data.
 
-## Faculty-Facing Summary
+## Public Claim
 
-```text
-I added an offline noise-injection evaluation that corrupts copied hardware
-traces and reruns the detector without collecting new hardware data. On the
-promoted D25 trace, the detector had zero missed fault windows across Gaussian,
-spike, dropout, drift, and quantization corruption in the tested ranges. Spike
-and dropout noise had little effect. Continuous Gaussian noise, slow drift, and
-some quantization settings were more challenging because they increased baseline
-activation and reduced event/baseline separation. This suggests the next
-robustness work should focus on filtering, drift compensation, and signal-quality
-gating to reduce false-positive pressure.
-```
-
-## Public Claim Boundary
-
-Safe public claim:
+Safe current claim:
 
 ```text
 The detector was stress-tested offline by injecting controlled noise into copied
@@ -136,24 +111,6 @@ continuous Gaussian/drift/quantization noise mainly increased baseline
 activation. This identifies false-positive control as the main robustness target.
 ```
 
-Avoid:
-
-```text
-Validated against all real-world noise.
-Cybersecure against spoofing.
-Field-proven noise robustness.
-Production-ready under arbitrary sensor corruption.
-```
-
-## Outputs
-
-Summary CSVs:
-
-- `data/hardware/noise_robustness/d25_golden_noise_quick/noise_robustness_summary.csv`
-- `data/hardware/noise_robustness/d25_golden_velocity_spike_dropout/noise_robustness_summary.csv`
-- `data/hardware/noise_robustness/d25_golden_combined_multisignal/noise_robustness_summary.csv`
-- `data/hardware/noise_robustness/d25_clean_baseline_multisignal/noise_robustness_summary.csv`
-- `data/hardware/noise_robustness/d25_gaussian_drift_boundary/noise_robustness_summary.csv`
 
 Tool:
 
