@@ -100,7 +100,7 @@ Practical tolerance boundary:
 - Severity `0.05` and above should be treated as a stress condition rather than
   ordinary operating noise until calibrated against real noisy field data.
 
-## Public Claim
+## Overall Claim
 
 Safe current claim:
 
@@ -110,9 +110,3 @@ bench traces. In the tested ranges, fault-window misses remained at zero, while
 continuous Gaussian/drift/quantization noise mainly increased baseline
 activation. This identifies false-positive control as the main robustness target.
 ```
-
-
-Tool:
-
-- `tools/offline_noise_robustness.py`
-
