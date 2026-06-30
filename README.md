@@ -152,6 +152,47 @@ condition was removed.
 
 These results are early bench results, not field validation.
 
+### Offline Noise-Injection Robustness
+
+To test how the detector behaves when actuator traces are corrupted by signal
+noise, an offline noise-injection evaluation was added using copied D25 bench
+traces. No new hardware data was collected for this test, and the original
+hardware traces were not modified.
+
+The evaluation injected controlled corruption into velocity, current, voltage,
+and combined multi-signal traces, then reran the detector through the existing
+offline evaluation path.
+
+Noise modes tested:
+
+* Gaussian noise
+* Sparse spike noise
+* Dropout / stale-sample noise
+* Slow drift / bias
+* Quantization noise
+
+Across the tested D25 fault-trace corruption sweeps, missed fault windows
+remained at `0`. Spike and dropout noise had little effect. Continuous Gaussian
+noise, slow drift, and some quantization settings were more challenging because
+they increased baseline activation and reduced event/baseline separation.
+
+Practical boundary from the current offline tests:
+
+| Noise condition                                 | Interpretation                                                                               |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Gaussian/drift severity `0.005` to `0.01`       | Relatively clean                                                                             |
+| Gaussian/drift severity around `0.02` to `0.03` | False-positive pressure becomes visible                                                      |
+| Severity `0.05` and above                       | Stress testing, not ordinary operating noise unless calibrated against real noisy field data |
+
+This suggests the next robustness target is false-positive control through
+filtering, drift compensation, temporal persistence checks, and signal-quality
+gating.
+
+This is an offline robustness result on existing D25 bench traces, not field
+validation under arbitrary real-world noise.
+
+For more detail, see [Offline Noise Robustness](docs/d25_offline_noise_robustness_review_2026-06-30.md).
+
 ## Other Bench-Tested Scenarios
 
 The broader evidence set includes:
